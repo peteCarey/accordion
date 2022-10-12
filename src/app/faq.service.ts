@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, tap, throwError } from 'rxjs';
 import { IFaq } from './faq/faq';
 
 @Injectable({
@@ -11,7 +11,20 @@ export class FaqService {
 
   constructor(private http: HttpClient) {}
 
-  getFaqs() {
-    return this.http.get(this.faqUrl);
+  getFaqs(): Observable<IFaq[]> {
+    return this.http.get<IFaq[]>(this.faqUrl).pipe(
+      tap((data) => console.log('All: ', JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+  private handleError(err: HttpErrorResponse) {
+    let errorMessage = '';
+    if (err.error instanceof ErrorEvent) {
+      errorMessage = `An error occurred: ${err.error.message}`;
+    } else {
+      errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(() => errorMessage);
   }
 }

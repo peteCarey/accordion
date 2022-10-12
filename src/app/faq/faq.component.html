@@ -1,1 +1,70 @@
 <h2>{{ id }}</h2>
+
+<div *ngFor="let faq of faqs">
+  Q{{ faq.id }}{{ faq.question }}
+  <section class="accordion">
+    <input type="radio" name="collapse" id="handle1" checked="checked" />
+    <h2 class="handle">
+      <label for="handle1"> Q{{ faq.id }}{{ faq.question }} </label>
+    </h2>
+
+    <div class="content">
+      <p>{{ faq.answer }}</p>
+    </div>
+  </section>
+  <svg
+    class="svg-rotate__icon"
+    width="40px"
+    height="40px"
+    viewBox="0 0 357 357"
+  >
+    <g id="add">
+      <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
+    </g>
+  </svg>
+  <p>{{ faq.answer }}</p>
+</div>
+
+<!-- 
+<div class="table-responsive">
+  <table class="table" *ngIf="faqs.length">
+    <thead>
+      <tr>
+      <th>
+          <button class="btn btn-primary" (click)="toggleImage()">
+            {{ showImage ? "Hide" : "Show" }} Image
+          </button>
+        </th>
+        <th>Product</th>
+        <th>Code</th>
+        <th>Available</th>
+        <th>Price</th>
+        <th>5 Star Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let faq of faqs">
+        <td>
+          <img
+            *ngIf="showImage"
+            [src]="product.imageUrl"
+            [title]="product.productName"
+            [style.width.px]="imageWidth"
+            [style.margin.px]="imageMargin"
+          />
+        </td>
+        <td>{{ faq. }}</td>
+        <td>{{ product.productCode | lowercase | convertToSpaces: "-" }}</td>
+        <td>{{ product.releaseDate }}</td>
+        <td>{{ product.price | currency: "USD":"symbol":"1.2-2" }}</td>
+        <td>
+          <pm-star
+            [rating]="product.starRating"
+            (ratingClicked)="onRatingClicked($event)"
+          >
+          </pm-star>
+        </td>
+      </tr>
+    </tbody>
+  </table> 
+</div>-->
