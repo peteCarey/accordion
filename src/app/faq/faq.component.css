@@ -1,0 +1,60 @@
+.contentBody {
+  padding: 1rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #000000;
+  border-width: 0.25rem;
+}
+/* The buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* the background color to the button if it is clicked on, and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  /* src: "./assets/plus-icon.svg"; */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+.questionNumber {
+  padding-right: 3rem;
+  font-weight: bold;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  display: block;
+  overflow: hidden;
+}
+
+.hidePanel {
+  display: none;
+}
+
+#answer {
+  padding: 10px;
+}

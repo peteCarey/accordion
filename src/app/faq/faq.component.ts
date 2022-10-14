@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IFaq } from './faq';
 import { FaqService } from '../faq.service';
@@ -9,10 +9,11 @@ import { FaqService } from '../faq.service';
   styleUrls: ['./faq.component.css'],
 })
 export class FaqComponent implements OnInit, OnDestroy {
-  id = 'Q1';
   errorMessage: string = '';
   sub!: Subscription;
   faqs: IFaq[] = [];
+
+  showBody = false;
 
   constructor(private faqService: FaqService) {}
 
@@ -27,5 +28,10 @@ export class FaqComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  toggle() {
+    console.log('button clicked');
+    this.showBody = !this.showBody;
   }
 }

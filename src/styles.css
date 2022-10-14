@@ -45,3 +45,13 @@ button:disabled {
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@font-face {
+  font-family: oswald-bold;
+  src: url("./assets/fonts/oswald-bold.ttf") format("truetype");
+}
+
+h2 {
+  font-family: oswald-bold;
+  color: darkgreen;
+}

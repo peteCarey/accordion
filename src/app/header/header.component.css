@@ -1,0 +1,22 @@
+.content-wrap {
+  max-width: 80rem;
+  width: 85%;
+  margin: 0 auto;
+  padding: 6rem 0;
+}
+
+.contentHeading {
+  padding: 0.25rem;
+  background: #ffffff;
+  margin: 2rem;
+  border-bottom: 1px solid #000000;
+  border-width: 2rem;
+}
+
+h1 {
+  color: #000000;
+}
+
+header {
+  background: #000000;
+}

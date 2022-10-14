@@ -1,70 +1,148 @@
-<h2>{{ id }}</h2>
-
-<div *ngFor="let faq of faqs">
-  Q{{ faq.id }}{{ faq.question }}
-  <section class="accordion">
-    <input type="radio" name="collapse" id="handle1" checked="checked" />
+<!--<div *ngFor="let faq of faqs">
+   <section class="accordion">
     <h2 class="handle">
-      <label for="handle1"> Q{{ faq.id }}{{ faq.question }} </label>
+      <label for="handle{{ faq.id }}"> Q{{ faq.id }} {{ faq.question }} </label>
+      <input
+        type="radio"
+        name="collapse"
+        id="handle{{ faq.id }}"
+        checked="checked"
+      />
+      <svg
+        class="svg-rotate__icon"
+        width="40px"
+        height="40px"
+        viewBox="0 0 357 357"
+      >
+        <g id="add">
+          <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
+        </g>
+      </svg>
     </h2>
 
     <div class="content">
       <p>{{ faq.answer }}</p>
     </div>
   </section>
-  <svg
-    class="svg-rotate__icon"
-    width="40px"
-    height="40px"
-    viewBox="0 0 357 357"
-  >
-    <g id="add">
-      <path d="M357,204H204v153h-51V204H0v-51h153V0h51v153h153V204z" />
-    </g>
-  </svg>
-  <p>{{ faq.answer }}</p>
+
+  <h1>Accordions</h1>
+
+  <h4 class="text-secondary">Regular Accordion</h4>-->
+
+<!-- lines 36 to 94 work in a way
+  <div class="accordion" id="regularAccordionRobots">
+    <div class="accordion-item">
+      <h2 id="regularHeadingFirst" class="accordion-header">
+        <button
+          class="accordion-button"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#regularCollapseFirst"
+          aria-expanded="true"
+          aria-controls="regularCollapseFirst"
+        >
+          Q{{ faq.id }} {{ faq.question }}
+        </button>
+      </h2>
+      <div
+        id="regularCollapseFirst"
+        class="accordion-collapse collapse show"
+        aria-labelledby="regularHeadingFirst"
+        data-bs-parent="#regularAccordionRobots"
+      >
+        <div class="accordion-body">
+          {{ faq.answer }}
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="regularHeadingSecond">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#regularCollapseSecond"
+          aria-expanded="false"
+          aria-controls="regularCollapseSecond"
+        >
+          The Social Impact of Collective Artificial Intelligence
+        </button>
+      </h2>
+      <div
+        id="regularCollapseSecond"
+        class="accordion-collapse collapse"
+        aria-labelledby="regularHeadingSecond"
+        data-bs-parent="#regularAccordionRobots"
+      >
+        <div class="accordion-body">
+          Throughout history, robots have both embraced and rejected the act of
+          working with other robots in a collective. While science has shown
+          that collective artificial intelligence helps both intellectual and
+          technological development, it has also shown that some robots really
+          want to just be and think by themselves. How do we harness the
+          benefits of both while avoiding the downfall of each?
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr />*ngFor="let faq of faqs"
+
+<div class="accordion" id="accordionExample">
+  <div *ngFor="let faq of faqs" class="accordion-item">
+    <div>
+      <h2 class="accordion-header" id="'headingOne'+ {{ faq.id }}">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#accordionCollapseOne"
+          aria-expanded="false"
+          aria-controls="accordionCollapseOne"
+        >
+          Q{{ faq.id }} {{ faq.question }}
+          <!--  Lorem ipsum dolor sit amet consectetur.
+        </button>
+      </h2>
+
+      <div
+        id="accordionCollapseOne"
+        class="accordion-collapse collapse"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionExample"
+      >
+        <div class="accordion-body">
+          <!---  Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo quam
+          dolore ea pariatur veniam rem voluptatibus harum magni reiciendis
+          maiores! faq.
+          {{ faq.answer }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<!--<div class="headerTitle">{{ title }}</div>-->
+
+<div class="contentBody" *ngFor="let faq of faqs">
+  <button class="accordion" id="button{{ faq.id }}" (click)="toggle()">
+    <span class="questionNumber">Q{{ faq.id }} </span>{{ faq.question }}
+  </button>
+  <div *ngIf="showBody">
+    <div class="panel" id="panel{{ faq.id }}">
+      <p id="answer">{{ faq.answer }}</p>
+    </div>
+  </div>
+  <!--
+<button class="accordion" (click)="clickEvent()">Section 2</button>
+<h2>{{ msg }}</h2>
+
+<div class="panel">
+  <p>Lorem ipsum...</p>
 </div>
 
-<!-- 
-<div class="table-responsive">
-  <table class="table" *ngIf="faqs.length">
-    <thead>
-      <tr>
-      <th>
-          <button class="btn btn-primary" (click)="toggleImage()">
-            {{ showImage ? "Hide" : "Show" }} Image
-          </button>
-        </th>
-        <th>Product</th>
-        <th>Code</th>
-        <th>Available</th>
-        <th>Price</th>
-        <th>5 Star Rating</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let faq of faqs">
-        <td>
-          <img
-            *ngIf="showImage"
-            [src]="product.imageUrl"
-            [title]="product.productName"
-            [style.width.px]="imageWidth"
-            [style.margin.px]="imageMargin"
-          />
-        </td>
-        <td>{{ faq. }}</td>
-        <td>{{ product.productCode | lowercase | convertToSpaces: "-" }}</td>
-        <td>{{ product.releaseDate }}</td>
-        <td>{{ product.price | currency: "USD":"symbol":"1.2-2" }}</td>
-        <td>
-          <pm-star
-            [rating]="product.starRating"
-            (ratingClicked)="onRatingClicked($event)"
-          >
-          </pm-star>
-        </td>
-      </tr>
-    </tbody>
-  </table> 
-</div>-->
+<button class="accordion" (click)="clickEvent()">Section 3</button>
+<div class="panel">
+  <p>Lorem ipsum...</p>
+</div></div>
+--></div>
