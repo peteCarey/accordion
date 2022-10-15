@@ -1,4 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { IFaq } from './faq';
 import { FaqService } from '../faq.service';
@@ -12,8 +21,10 @@ export class FaqComponent implements OnInit, OnDestroy {
   errorMessage: string = '';
   sub!: Subscription;
   faqs: IFaq[] = [];
+  questionId: string = '';
 
-  showBody = false;
+  @Input() icon = 'arrow';
+  @ViewChildren('el', { read: ElementRef }) el!: QueryList<ElementRef>;
 
   constructor(private faqService: FaqService) {}
 
@@ -30,8 +41,13 @@ export class FaqComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-  toggle() {
-    console.log('button clicked');
-    this.showBody = !this.showBody;
+  toggle(i: number) {
+    this.el.toArray()[i].nativeElement.classList.toggle('active');
+    const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
   }
 }
