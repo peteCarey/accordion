@@ -28,9 +28,10 @@
 
 .accordion:after {
   content: "\02795"; /* Unicode character for "plus" sign (+) */
-  /* src: "./assets/plus-icon.svg"; */
+  /* src: "./assets/plus-icon.svg";color: #777; */
   font-size: 13px;
-  color: #777;
+  background-color: #ffd300;
+  color: #1b1d1b;
   float: right;
   margin-left: 5px;
 }
@@ -47,8 +48,9 @@
 /* Style the accordion panel. Note: hidden by default */
 .panel {
   padding: 0 18px;
-  background-color: white;
+  background-color: #ffffff;
   max-height: 0;
+  border-bottom: solid;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
