@@ -1,6 +1,5 @@
 <div *ngFor="let faq of faqs; let i = index">
   <button #el class="accordion" (click)="toggle(i)">
-    <!--  <slot name="header">{{ item.question }}</slot>-->
     <span class="questionNumber">Q{{ faq.id }} </span>{{ faq.question }}
   </button>
   <div class="panel">
